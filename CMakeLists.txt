@@ -14,6 +14,9 @@ project("esp32dev-blinker-car" C CXX)
 
 include(CMakeListsPrivate.txt)
 
+
+include_directories(".pio/libdeps/esp32dev/OneButton/src")
+include_directories(".pio/libdeps/esp32dev/blinker-library-0.3.9/src")
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/CMakeListsUser.txt)
 include(CMakeListsUser.txt)
 endif()
@@ -30,4 +33,5 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+#add_executable(Z_DUMMY_TARGET ${SRC_LIST} src/car.h src/car.cpp)
 add_executable(Z_DUMMY_TARGET ${SRC_LIST} src/car.h src/car.cpp)

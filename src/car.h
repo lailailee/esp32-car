@@ -8,29 +8,35 @@
 
 class Car {
 public:
-    void front_left_forward();
+    //左轮
+    //IN1 13
+    //IN2 12
+    //ENA 14
+    //右轮
+    //IN3 27
+    //IN4 26
+    //ENB 25
 
-    void front_left_backward();
+    int car_state = 0;
 
-    void front_left_stop();
+    const int left_speed_gpio = 13;
+    const int left_forward_gpio = 12;
+    const int left_backward_gpio = 14;
 
-    void front_right_forward();
+    byte left_forward_value = LOW;
+    byte left_backward_value = LOW;
 
-    void front_right_backward();
+    int left_speed = 225;
 
-    void front_right_stop();
+    //前右轮
+    const int right_speed_gpio = 25;
+    const int right_forward_gpio = 27;
+    const int right_backward_gpio = 26;
 
-    void back_left_forward();
+    byte right_forward_value = LOW;
+    byte right_backward_value = LOW;
 
-    void back_left_backward();
-
-    void back_left_stop();
-
-    void back_right_forward();
-
-    void back_right_backward();
-
-    void back_right_stop();
+    int right_speed = 225;
 
     void forward();
 
@@ -38,57 +44,21 @@ public:
 
     void stop();
 
+    void init();
+
+    void turn_left();
+
+    void turn_right();
+    void turn_left_back();
+
+    void turn_right_back();
+
+    void execute_speed();
+
+    void execute_speed(int speed);
+
 private:
-    //前左轮
-    //IN1 13
-    //IN2 12
-    //ENA 14
-    //前右轮
-    //IN3 27
-    //IN4 26
-    //ENB 25
-    //后左轮
-    //IN1 33
-    //IN2 32
-    //ENA 35
-    //后右轮
-    //IN3 34
-    //IN4 39
-    //ENB 36
-    //前左轮
-    const int _GPIO_FRONT_LEFT_SPEED = 14;
-    const int _GPIO_FRONT_LEFT_FORWARD = 13;
-    const int _GPIO_FRONT_LEFT_BACKWARD = 12;
-    int _FRONT_LEFT_SPEED = 100;
-    byte _FRONT_LEFT_FORWARD = LOW;
-    byte _FRONT_LEFT_BACKWARD = LOW;
-    //前右轮
-    const int _GPIO_FRONT_RIGHT_SPEED = 25;
-    const int _GPIO_FRONT_RIGHT_FORWARD = 27;
-    const int _GPIO_FRONT_RIGHT_BACKWARD = 26;
-    int _FRONT_RIGHT_SPEED = 100;
-    byte _FRONT_RIGHT_FORWARD = LOW;
-    byte _FRONT_RIGHT_BACKWARD = LOW;
-    //后左轮
-    const int _GPIO_BACK_LEFT_SPEED = 35;
-    const int _GPIO_BACK_LEFT_FORWARD = 33;
-    const int _GPIO_BACK_LEFT_BACKWARD = 32;
-    int _BACK_LEFT_SPEED = 100;
-    byte _BACK_LEFT_FORWARD = LOW;
-    byte _BACK_LEFT_BACKWARD = LOW;
-    //后右轮
-    const int _GPIO_BACK_RIGHT_SPEED = 36;
-    const int _GPIO_BACK_RIGHT_FORWARD = 34;
-    const int _GPIO_BACK_RIGHT_BACKWARD = 39;
-    int _BACK_RIGHT_SPEED = 100;
-    byte _BACK_RIGHT_FORWARD = LOW;
-    byte _BACK_RIGHT_BACKWARD = LOW;
 
-    void _forward(byte *FORWARD, byte *BACKWARD, int GPIO_FORWARD, int GPIO_BACKWARD);
-
-    void _backward(byte *FORWARD, byte *BACKWARD, int GPIO_FORWARD, int GPIO_BACKWARD);
-
-    void _stop(byte *FORWARD, byte *BACKWARD, int GPIO_FORWARD, int GPIO_BACKWARD);
 
 };
 
